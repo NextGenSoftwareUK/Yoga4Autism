@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yoga4Autism — Unlocking the Gift Within</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧘</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#030a14;
+  --bg-card:#071220;
+  --teal:#00c9a7;
+  --violet:#a855f7;
+  --gold:#f0a500;
+  --green:#00e87c;
+  --rose:#ff5fa0;
+  --blue:#00c8ff;
+  --text:#a8bfd8;
+  --heading:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;font-size:17px;line-height:1.75;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(0,201,167,.06),transparent 60%),radial-gradient(ellipse 50% 40% at 90% 80%,rgba(168,85,247,.05),transparent 60%);pointer-events:none;z-index:0}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(3,10,20,.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,201,167,.12)}
+.nav-brand{font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;letter-spacing:.15em;color:#fff;text-decoration:none}
+.nav-brand span{color:var(--teal)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--text);text-decoration:none;transition:color .2s;text-transform:uppercase}
+.nav-links a:hover{color:var(--teal)}
+.nav-links-mobile-only{display:none}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-cta{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--teal);border:1px solid rgba(0,201,167,.35);border-radius:999px;padding:8px 18px;text-decoration:none;transition:background .2s,border-color .2s;white-space:nowrap}
+.nav-cta:hover{background:rgba(0,201,167,.08);border-color:rgba(0,201,167,.6)}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;z-index:101}
+.nav-toggle span{display:block;width:100%;height:2px;background:#a8bfd8;transition:transform .25s,opacity .25s}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:900px){
+  .nav-links{display:none;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(3,10,20,.97);padding:100px 40px 40px;gap:28px;z-index:99}
+  .nav-links.open{display:flex}
+  .nav-links-mobile-only{display:list-item}
+  .nav-toggle{display:flex}
+  nav{padding:16px 20px}
+}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;z-index:1}
+.hero-kicker{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.28em;color:var(--teal);margin-bottom:28px;opacity:.85}
+.hero-icon{font-size:80px;margin-bottom:28px;animation:breathe 4s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.08);opacity:1}}
+.hero-title{font-family:'Orbitron',sans-serif;font-size:clamp(36px,7vw,80px);font-weight:900;letter-spacing:.05em;color:#fff;line-height:1.05;margin-bottom:16px}
+.hero-title em{color:var(--teal);font-style:normal;display:block}
+.hero-tagline{font-family:'Orbitron',sans-serif;font-size:clamp(13px,1.8vw,18px);font-weight:700;letter-spacing:.12em;color:var(--violet);margin-bottom:32px}
+.hero-sub{font-size:clamp(16px,2vw,19px);color:var(--text);line-height:1.85;max-width:680px;margin:0 auto 48px}
+.hero-sub strong{color:#fff}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-teal{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:.12em;background:var(--teal);color:#030a14;border-radius:999px;padding:14px 36px;text-decoration:none;font-weight:700;transition:background .2s,transform .2s}
+.btn-teal:hover{background:#00e5bf;transform:translateY(-2px)}
+.btn-outline{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:.12em;background:transparent;color:var(--text);border:1px solid rgba(0,201,167,.3);border-radius:999px;padding:14px 36px;text-decoration:none;transition:border-color .2s,color .2s,transform .2s}
+.btn-outline:hover{border-color:rgba(0,201,167,.6);color:#fff;transform:translateY(-2px)}
+
+/* ── SECTIONS ── */
+.section{padding:80px 40px;position:relative;z-index:1}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-kicker{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.28em;color:var(--teal);margin-bottom:14px;text-align:center}
+.section-title{font-family:'Orbitron',sans-serif;font-size:clamp(22px,4vw,38px);font-weight:900;letter-spacing:.05em;color:#fff;text-align:center;margin-bottom:16px;line-height:1.2}
+.section-line{display:block;width:60px;height:2px;background:linear-gradient(90deg,var(--teal),transparent);margin:0 auto 24px}
+.section-sub{font-size:17px;color:var(--text);text-align:center;max-width:680px;margin:0 auto 52px;line-height:1.8}
+
+/* ── CARDS ── */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:1100px;margin:0 auto}
+.card{background:var(--bg-card);border:1px solid rgba(0,201,167,.12);border-radius:16px;padding:30px 26px;transition:border-color .3s,transform .3s}
+.card:hover{border-color:rgba(0,201,167,.3);transform:translateY(-4px)}
+.card-icon{font-size:36px;margin-bottom:14px}
+.card-title{font-family:'Orbitron',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--teal);margin-bottom:10px}
+.card-body{font-size:15px;color:var(--text);line-height:1.7}
+
+/* ── FOUNDER STORY ── */
+.founder-band{background:linear-gradient(135deg,rgba(0,201,167,.05),rgba(168,85,247,.05));border:1px solid rgba(0,201,167,.18);border-radius:20px;padding:56px 48px;max-width:960px;margin:0 auto}
+.founder-quote{font-family:'Orbitron',sans-serif;font-size:clamp(16px,2.5vw,22px);font-weight:700;color:#fff;line-height:1.45;margin-bottom:28px;letter-spacing:.02em}
+.founder-quote em{color:var(--teal);font-style:normal}
+.founder-body{font-size:16px;color:var(--text);line-height:1.85;margin-bottom:18px}
+.founder-body strong{color:#fff}
+.founder-sig{margin-top:32px;padding-top:24px;border-top:1px solid rgba(0,201,167,.15)}
+.founder-name{font-family:'Orbitron',sans-serif;font-size:13px;font-weight:900;color:#fff;letter-spacing:.08em;margin-bottom:4px}
+.founder-role{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--teal)}
+
+/* ── PROGRAMMES ── */
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:0 auto}
+.prog-card{background:var(--bg-card);border-radius:16px;padding:30px 26px;border:1px solid rgba(168,85,247,.15);transition:border-color .3s,transform .3s;text-align:center}
+.prog-card:hover{border-color:rgba(168,85,247,.35);transform:translateY(-4px)}
+.prog-icon{font-size:44px;margin-bottom:16px}
+.prog-title{font-family:'Orbitron',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--violet);margin-bottom:12px}
+.prog-body{font-size:15px;color:var(--text);line-height:1.7}
+
+/* ── FRANCHISE BAND ── */
+.franchise-band{background:linear-gradient(135deg,rgba(240,165,0,.06),rgba(0,201,167,.05));border:1px solid rgba(240,165,0,.2);border-radius:20px;padding:52px 44px;max-width:960px;margin:0 auto;text-align:center}
+.franchise-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:36px 0}
+.fstep{background:rgba(240,165,0,.05);border:1px solid rgba(240,165,0,.15);border-radius:12px;padding:20px 16px;text-align:center}
+.fstep-num{font-family:'Orbitron',sans-serif;font-size:28px;font-weight:900;color:var(--gold);margin-bottom:8px}
+.fstep-title{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--gold);margin-bottom:8px}
+.fstep-body{font-size:14px;color:var(--text);line-height:1.6}
+
+/* ── HOLISTIC PILLARS ── */
+.pillars-row{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:40px}
+.pillar{background:rgba(0,201,167,.06);border:1px solid rgba(0,201,167,.18);border-radius:999px;padding:12px 24px;font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--teal)}
+
+/* ── PIPELINE ── */
+.pipeline{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;margin:40px 0}
+.pipe-step{text-align:center;padding:24px 28px;background:var(--bg-card);border-radius:16px;min-width:180px}
+.pipe-step.teal{border:1px solid rgba(0,201,167,.3)}
+.pipe-step.blue{border:1px solid rgba(0,200,255,.3)}
+.pipe-step.violet{border:1px solid rgba(168,85,247,.3)}
+.pipe-icon{font-size:36px;margin-bottom:10px}
+.pipe-label{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.15em;margin-bottom:6px}
+.pipe-label.teal{color:var(--teal)}
+.pipe-label.blue{color:var(--blue)}
+.pipe-label.violet{color:var(--violet)}
+.pipe-title{font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;color:#fff}
+.pipe-arrow{font-size:28px;color:rgba(168,191,216,.25);padding:0 8px;align-self:center}
+
+/* ── KARMA ── */
+.karma-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:900px;margin:0 auto}
+.kchip{background:var(--bg-card);border:1px solid rgba(0,201,167,.15);border-radius:12px;padding:14px 20px;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:140px}
+.kchip-num{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;color:var(--teal)}
+.kchip-act{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--text);text-align:center}
+
+/* ── CONNECT AVATAR ── */
+.av-connect-btn{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#030a14;background:var(--teal);border:none;border-radius:999px;padding:9px 18px;cursor:pointer;white-space:nowrap;transition:background .2s}
+.av-connect-btn:hover{background:#00e5bf}
+.av-connected-badge{display:none;align-items:center;gap:8px;background:rgba(0,201,167,.1);border:1px solid rgba(0,201,167,.25);border-radius:999px;padding:6px 14px}
+.av-connected-badge.show{display:flex}
+.av-avatar-name{font-family:'Share Tech Mono',monospace;font-size:11px;color:#fff;letter-spacing:.08em}
+.av-karma-pill{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--teal);cursor:pointer}
+.av-logout-btn{background:none;border:none;color:rgba(168,191,216,.5);cursor:pointer;font-size:12px;padding:0 2px}
+.av-logout-btn:hover{color:#fff}
+.av-modal-overlay{display:none;position:fixed;inset:0;background:rgba(3,10,20,.88);backdrop-filter:blur(8px);z-index:200;align-items:center;justify-content:center}
+.av-modal-overlay.open{display:flex}
+.av-modal{background:#071220;border:1px solid rgba(0,201,167,.2);border-radius:20px;padding:40px;width:100%;max-width:400px;text-align:center;position:relative}
+.av-modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:rgba(168,191,216,.5);font-size:18px;cursor:pointer}
+.av-modal-close:hover{color:#fff}
+.av-modal-kicker{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--teal);margin-bottom:10px}
+.av-modal-title{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;color:#fff;margin-bottom:8px}
+.av-modal-sub{font-size:14px;color:var(--text);margin-bottom:24px;line-height:1.6}
+.av-field{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(0,201,167,.2);border-radius:10px;padding:12px 16px;color:#fff;font-family:'Rajdhani',sans-serif;font-size:15px;margin-bottom:12px;outline:none;transition:border-color .2s}
+.av-field:focus{border-color:rgba(0,201,167,.5)}
+.av-field::placeholder{color:rgba(168,191,216,.4)}
+.av-submit{width:100%;background:var(--teal);color:#030a14;border:none;border-radius:999px;padding:13px;font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:.12em;cursor:pointer;margin-top:4px;transition:background .2s}
+.av-submit:hover{background:#00e5bf}
+.av-error{font-size:13px;color:#ff5f5f;margin-top:8px;min-height:20px}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid rgba(0,201,167,.1);padding:48px 40px;text-align:center;position:relative;z-index:1}
+.footer-brand{font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;letter-spacing:.15em;color:#fff;margin-bottom:6px}
+.footer-brand span{color:var(--teal)}
+.footer-sub{font-size:14px;color:var(--text);margin-bottom:24px}
+.footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;list-style:none;margin-bottom:32px}
+.footer-links a{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--text);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--teal)}
+.footer-copy{font-size:13px;color:rgba(168,191,216,.5)}
+
+@media(max-width:820px){
+  .prog-grid{grid-template-columns:1fr}
+  .franchise-steps{grid-template-columns:repeat(2,1fr)}
+  .pipeline{flex-direction:column}
+  .pipe-arrow{transform:rotate(90deg)}
+  .founder-band{padding:36px 24px}
+  .section{padding:60px 20px}
+  nav{padding:16px 20px}
+}
+@media(max-width:520px){
+  .section{padding:60px .75rem}
+  .founder-band{padding:28px 16px}
+}
+
+/* ── THEME SWITCHER ── */
+.theme-switcher{display:flex;align-items:center;gap:0;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:3px;flex-shrink:0}
+.theme-btn{font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:.04em;padding:6px 14px;border-radius:999px;border:none;cursor:pointer;transition:all .25s;background:transparent;color:rgba(255,255,255,.5)}
+.theme-btn.active{color:#030a14}
+body:not(.classic) .theme-btn[data-theme="modern"]{background:#00c9a7;color:#030a14}
+body.classic .theme-btn[data-theme="classic"]{background:#ff3ea5;color:#fff}
+
+/* ── CLASSIC THEME ── */
+body.classic{background:#fff;color:#333}
+body.classic::before{background:none}
+body.classic nav{background:rgba(255,255,255,.96);border-bottom:3px solid #ff3ea5;backdrop-filter:none}
+body.classic .nav-brand{color:#ff3ea5;font-family:'Nunito',sans-serif}
+body.classic .nav-brand span{color:#00b8d9}
+body.classic .nav-links a{color:#555;font-family:'Nunito',sans-serif;font-size:13px;letter-spacing:.01em}
+body.classic .nav-links a:hover{color:#ff3ea5}
+body.classic .nav-cta{color:#fff;background:#ff3ea5;border-color:#ff3ea5}
+body.classic .nav-cta:hover{background:#e0007a;border-color:#e0007a}
+body.classic .nav-toggle span{background:#ff3ea5}
+body.classic .hero{background:linear-gradient(160deg,#fff9fe 0%,#e8fbff 100%)}
+body.classic .hero-kicker{color:#00b8d9;font-family:'Nunito',sans-serif;font-size:13px;letter-spacing:.05em}
+body.classic .hero-title{color:#ff3ea5;font-family:'Nunito',sans-serif;font-weight:900;text-shadow:3px 3px 0 rgba(255,62,165,.12)}
+body.classic .hero-title em{color:#00b8d9}
+body.classic .hero-tagline{color:#f5a623;font-family:'Nunito',sans-serif}
+body.classic .hero-sub{color:#444}
+body.classic .hero-sub strong{color:#ff3ea5}
+body.classic .btn-teal{background:#ff3ea5;color:#fff}
+body.classic .btn-teal:hover{background:#e0007a}
+body.classic .btn-outline{color:#ff3ea5;border-color:#ff3ea5}
+body.classic .btn-outline:hover{background:#fff0f7;color:#ff3ea5}
+body.classic .section{background:#fff !important}
+body.classic .section:nth-child(even){background:#f5fdff !important}
+body.classic .section-kicker{color:#00b8d9;font-family:'Nunito',sans-serif}
+body.classic .section-title{color:#ff3ea5;font-family:'Nunito',sans-serif}
+body.classic .section-line{background:linear-gradient(90deg,#ff3ea5,transparent)}
+body.classic .section-sub{color:#555}
+body.classic .card{background:#fff;border:2px solid #ffe0f3;box-shadow:0 4px 20px rgba(255,62,165,.08)}
+body.classic .card:hover{border-color:#ff3ea5;box-shadow:0 8px 32px rgba(255,62,165,.18)}
+body.classic .card-title{color:#ff3ea5;font-family:'Nunito',sans-serif}
+body.classic .card-body{color:#444}
+body.classic .founder-band{background:linear-gradient(135deg,#fff0f7,#e8fbff);border-color:#ffb3d9}
+body.classic .founder-quote{color:#ff3ea5;font-family:'Nunito',sans-serif}
+body.classic .founder-quote em{color:#00b8d9}
+body.classic .founder-body{color:#444}
+body.classic .founder-body strong{color:#ff3ea5}
+body.classic .founder-sig{border-top-color:#ffb3d9}
+body.classic .founder-name{color:#ff3ea5;font-family:'Nunito',sans-serif}
+body.classic .founder-role{color:#00b8d9}
+body.classic .prog-card{background:#fff;border:2px solid #e8f0ff;box-shadow:0 4px 20px rgba(0,184,217,.08)}
+body.classic .prog-card:hover{border-color:#00b8d9}
+body.classic .prog-title{color:#00b8d9;font-family:'Nunito',sans-serif}
+body.classic .prog-body{color:#444}
+body.classic .franchise-band{background:linear-gradient(135deg,#fffbf0,#fff5e0);border-color:#f5c842}
+body.classic .fstep{background:#fffdf0;border-color:#f5c842}
+body.classic .fstep-num{color:#f5a623}
+body.classic .fstep-title{color:#f5a623;font-family:'Nunito',sans-serif}
+body.classic .fstep-body{color:#555}
+body.classic .pillar{background:#fff0f7;border-color:#ffb3d9;color:#ff3ea5}
+body.classic .pipe-step{background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+body.classic .pipe-step.teal{border-color:#00b8d9}
+body.classic .pipe-step.blue{border-color:#7b61ff}
+body.classic .pipe-step.violet{border-color:#f5a623}
+body.classic .pipe-label.teal{color:#00b8d9}
+body.classic .pipe-label.blue{color:#7b61ff}
+body.classic .pipe-label.violet{color:#f5a623}
+body.classic .pipe-title{color:#333}
+body.classic .pipe-arrow{color:#ccc}
+body.classic .kchip{background:#fff0f7;border-color:#ffb3d9}
+body.classic .kchip-num{color:#ff3ea5}
+body.classic .kchip-act{color:#888}
+body.classic footer{background:#fff9fe;border-top:3px solid #ff3ea5}
+body.classic .footer-brand{color:#ff3ea5;font-family:'Nunito',sans-serif}
+body.classic .footer-brand span{color:#00b8d9}
+body.classic .footer-sub{color:#666}
+body.classic .footer-links a{color:#666}
+body.classic .footer-links a:hover{color:#ff3ea5}
+body.classic .footer-copy{color:#aaa}
+body.classic .av-connect-btn{background:#ff3ea5;color:#fff}
+body.classic .av-connect-btn:hover{background:#e0007a}
+body.classic .av-connected-badge{background:rgba(255,62,165,.08);border-color:rgba(255,62,165,.3)}
+body.classic .av-karma-pill{color:#ff3ea5}
+body.classic .theme-switcher{background:rgba(255,62,165,.08);border-color:rgba(255,62,165,.2)}
+body.classic .theme-btn{color:rgba(255,62,165,.4)}
+
+/* paint-splash hero decoration in classic mode */
+body.classic .hero::after{content:'';position:absolute;inset:0;background:
+  radial-gradient(circle 220px at 10% 20%,rgba(255,62,165,.08),transparent),
+  radial-gradient(circle 180px at 90% 15%,rgba(0,184,217,.07),transparent),
+  radial-gradient(circle 150px at 80% 80%,rgba(245,198,66,.08),transparent),
+  radial-gradient(circle 130px at 20% 75%,rgba(255,62,165,.06),transparent);
+  pointer-events:none;z-index:0}
+body.classic .nav-links{background:rgba(255,249,254,.98)}
+
+@media(max-width:900px){
+  body.classic .nav-links{background:rgba(255,249,254,.98)}
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#"><span>YOGA4</span>AUTISM</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#mission">Mission</a></li>
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#benefits">Benefits</a></li>
+    <li><a href="#programmes">Programmes</a></li>
+    <li><a href="#portal">Y4A Portal</a></li>
+    <li><a href="#franchise">Franchise</a></li>
+    <li><a href="#karma">Karma</a></li>
+    <li><a href="#ecosystem">OASIS</a></li>
+    <li class="nav-links-mobile-only"><a href="#franchise">Become a Teacher</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="theme-switcher" id="theme-switcher">
+      <button class="theme-btn" data-theme="classic">🎨 Classic</button>
+      <button class="theme-btn active" data-theme="modern">🌌 Modern</button>
+    </div>
+    <a class="nav-cta" href="#franchise">🧘 Become a Teacher</a>
+  </div>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-kicker">FOUNDED 2013 · YOGA · MINDFULNESS · NATURE · NUTRITION · MEDITATION</div>
+  <div class="hero-icon">🧘</div>
+  <h1 class="hero-title">UNLOCK THE<em>GIFT WITHIN.</em></h1>
+  <div class="hero-tagline">Yoga &amp; Holistic Wellness for Autism, All Disabilities &amp; All Ages</div>
+  <p class="hero-sub">Yoga4Autism is a global movement — not just a class. We use yoga, mindfulness, nature, nutrition and meditation to help every person on the spectrum and beyond to <strong>discover who they truly are</strong> and unlock the extraordinary gift that lives inside them.</p>
+  <div class="hero-btns">
+    <a class="btn-teal" href="#programmes">Explore Programmes →</a>
+    <a class="btn-outline" href="#story">Read Our Story</a>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="section" id="mission" style="background:rgba(0,201,167,.02)">
+  <div class="section-inner">
+    <div class="section-kicker">OUR MISSION</div>
+    <h2 class="section-title">Every Person. Every Ability. Every Age.</h2>
+    <span class="section-line"></span>
+    <p class="section-sub">Y4A is for everyone — children, teenagers, adults, and seniors. Autism, ADHD, dyslexia, dyspraxia, sensory processing, anxiety, depression and all other conditions and disabilities. No experience. No prerequisites. Just you, your breath, and a safe space to grow.</p>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">🌱</div>
+        <div class="card-title">HOLISTIC TRANSFORMATION</div>
+        <p class="card-body">We don't just teach yoga poses. We teach a complete holistic lifestyle — yoga, breathwork, mindfulness, meditation, nutrition, time in nature — the full toolkit that transforms lives from the inside out.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧠</div>
+        <div class="card-title">NEURODIVERSITY CELEBRATED</div>
+        <p class="card-body">We believe neurodivergent minds are not broken — they are different by design. Many of history's greatest thinkers, artists and innovators were on the spectrum. Y4A helps unlock that superpower safely and joyfully.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <div class="card-title">COMMUNITY &amp; BELONGING</div>
+        <p class="card-body">No judgement. No pressure. No one-size-fits-all. Every Y4A space is warm, gentle and adaptive — designed around the individual, not the other way around. You belong here exactly as you are.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <div class="card-title">GLOBAL FRANCHISE NETWORK</div>
+        <p class="card-body">We train Y4A teachers and support them to open centres in their local communities worldwide — bringing these life-changing practices to every town, city and country on Earth.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">☀️</div>
+        <div class="card-title">BACK TO NATURE</div>
+        <p class="card-body">Screen time is at an all-time high and it's hurting everyone — especially kids. Y4A actively gets people outside: parks, beaches, gardens, woods. Nature is the oldest healer. We just help people remember that.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💜</div>
+        <div class="card-title">MEDICATION-FREE APPROACH</div>
+        <p class="card-body">We are not anti-medicine. But we know from lived experience that yoga, mindfulness and holistic lifestyle changes can reduce — and in many cases transform — the symptoms that medication alone never could.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER STORY -->
+<section class="section" id="story">
+  <div class="section-inner">
+    <div class="section-kicker">OUR FOUNDER'S STORY</div>
+    <h2 class="section-title">The Practice That Changed Everything</h2>
+    <span class="section-line"></span>
+
+    <div class="founder-band">
+      <div class="founder-quote">"The medication never helped — it just made me feel like a zombie. Numb. The best thing I ever did was getting clean off the meds and getting healthy. <em>Yoga changed everything.</em>"</div>
+      <p class="founder-body">Yoga4Autism was founded in 2013 by <strong>David Ellams</strong> — entrepreneur, technologist, public speaker and person on the autism spectrum — long before it was widely talked about, long before there was support, and long before the world had language for what he was experiencing.</p>
+      <p class="founder-body">After years of trying conventional medication that left him feeling disconnected and unlike himself, David discovered yoga. Then mindfulness. Then meditation. Then nutrition. Then nature. One by one, each piece of the holistic puzzle clicked into place — and his symptoms began to genuinely improve, not just be masked.</p>
+      <p class="founder-body"><strong>"I now do yoga every single day — religiously — because nothing has helped me more."</strong> From that transformation came a burning desire to share it: first through yoga classes, then school visits, public speaking at shows and events, retreats, 1-on-1 sessions and group classes — and eventually, a global franchise model to bring Y4A to every community on Earth.</p>
+      <p class="founder-body">Y4A was the very first project David created in 2013 — before the OASIS, before the Justice League Academy, before anything else. It is the seed from which an entire vision of a better world grew. And after nearly a decade of building the technology to support that vision, Y4A is back — and this time, it has the full power of the OASIS Omniverse behind it.</p>
+      <p class="founder-body" style="color:var(--teal);font-style:italic">"I have been trying to get back to Y4A ever since I pivoted to the tech in 2016. It took 9 years longer than planned — but here we are. And I truly believe that everything we built in between was worth it, because now Y4A can reach the whole world."</p>
+      <div class="founder-sig">
+        <div class="founder-name">David Ellams</div>
+        <div class="founder-role">CEO / CTO / FOUNDER — YOGA4AUTISM LTD &amp; NEXTGEN WORLD LTD · CREATOR OF THE OASIS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section" id="benefits" style="background:rgba(0,201,167,.02)">
+  <div class="section-inner">
+    <div class="section-kicker">WHY IT WORKS</div>
+    <h2 class="section-title">The Science &amp; the Experience</h2>
+    <span class="section-line"></span>
+    <p class="section-sub">Decades of research — and thousands of lived experiences — show that yoga and holistic practices make a measurable difference for autistic people and those with related conditions. Here is what we see, session by session.</p>
+
+    <div class="cards-grid">
+      <div class="card"><div class="card-icon">😌</div><div class="card-title">REDUCED ANXIETY</div><p class="card-body">Breathwork and gentle movement activate the parasympathetic nervous system — switching off the fight-or-flight response that many autistic people live in constantly.</p></div>
+      <div class="card"><div class="card-icon">🎯</div><div class="card-title">IMPROVED FOCUS</div><p class="card-body">Mindfulness and meditation train attention in a gentle, pressure-free way — often with profound results for those who struggle with traditional concentration exercises.</p></div>
+      <div class="card"><div class="card-icon">🤸</div><div class="card-title">BETTER BODY AWARENESS</div><p class="card-body">Many autistic people have a disconnected relationship with their own bodies. Yoga rebuilds that connection gently — improving coordination, proprioception and self-regulation.</p></div>
+      <div class="card"><div class="card-icon">😴</div><div class="card-title">DEEPER SLEEP</div><p class="card-body">Sleep difficulties are extremely common on the spectrum. Evening yoga and breathwork practices help calm an overactive nervous system and significantly improve sleep quality.</p></div>
+      <div class="card"><div class="card-icon">🗣️</div><div class="card-title">SOCIAL CONFIDENCE</div><p class="card-body">Group classes in a safe, non-judgmental space gently build the social comfort and communication skills that other environments can make feel overwhelming.</p></div>
+      <div class="card"><div class="card-icon">⚡</div><div class="card-title">SENSORY REGULATION</div><p class="card-body">Specific yoga sequences and mindfulness techniques help manage sensory overload — one of the most debilitating daily challenges for many people on the spectrum.</p></div>
+    </div>
+
+    <div class="pillars-row">
+      <span class="pillar">🧘 Yoga</span>
+      <span class="pillar">🌬️ Breathwork</span>
+      <span class="pillar">🧠 Mindfulness</span>
+      <span class="pillar">🌿 Meditation</span>
+      <span class="pillar">🥗 Nutrition</span>
+      <span class="pillar">☀️ Nature Time</span>
+      <span class="pillar">💧 Hydration</span>
+      <span class="pillar">😴 Sleep Hygiene</span>
+      <span class="pillar">🏃 Movement</span>
+      <span class="pillar">🎨 Creative Expression</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMMES -->
+<section class="section" id="programmes">
+  <div class="section-inner">
+    <div class="section-kicker">WHAT WE OFFER</div>
+    <h2 class="section-title">Programmes for Every Person</h2>
+    <span class="section-line"></span>
+    <p class="section-sub">Every Y4A programme is fully adaptive — designed around the individual, not a rigid curriculum. We meet every person exactly where they are.</p>
+
+    <div class="prog-grid">
+      <div class="prog-card">
+        <div class="prog-icon">🧑‍🤝‍🧑</div>
+        <div class="prog-title">GROUP CLASSES</div>
+        <p class="prog-body">Small, structured group sessions in a warm and welcoming environment. Carefully adapted for mixed abilities. A gentle introduction to the Y4A community and a wonderful way to build social connection.</p>
+      </div>
+      <div class="prog-card">
+        <div class="prog-icon">🌟</div>
+        <div class="prog-title">1-ON-1 SESSIONS</div>
+        <p class="prog-body">Fully personalised one-to-one sessions tailored to the individual's specific needs, goals and sensory profile. The fastest route to transformation — and ideal for those who find group settings overwhelming.</p>
+      </div>
+      <div class="prog-card">
+        <div class="prog-icon">🏡</div>
+        <div class="prog-title">RETREATS</div>
+        <p class="prog-body">Multi-day immersive retreats combining yoga, meditation, nutrition, nature and community. A chance to completely reset — away from the noise of daily life and into a space of deep healing and self-discovery.</p>
+      </div>
+      <div class="prog-card">
+        <div class="prog-icon">🏫</div>
+        <div class="prog-title">SCHOOL PROGRAMMES</div>
+        <p class="prog-body">Bringing Y4A directly into schools — workshops, assemblies and ongoing programmes for children on the spectrum and those with additional needs. Empowering young people before challenges become crises.</p>
+      </div>
+      <div class="prog-card">
+        <div class="prog-icon">🎤</div>
+        <div class="prog-title">PUBLIC SPEAKING</div>
+        <p class="prog-body">Talks, workshops and keynotes for schools, conferences, businesses, health organisations and community events — spreading awareness of holistic approaches to autism and neurodiversity.</p>
+      </div>
+      <div class="prog-card">
+        <div class="prog-icon">📱</div>
+        <div class="prog-title">ONLINE &amp; IN OUR WORLD</div>
+        <p class="prog-body">Coming soon — Y4A classes, guided meditations and wellness programmes available digitally and inside Our World (the OASIS metaverse), bringing holistic wellness into the spaces where people already spend their time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRANCHISE -->
+<section class="section" id="franchise" style="background:rgba(240,165,0,.02)">
+  <div class="section-inner">
+    <div class="section-kicker">BECOME A Y4A TEACHER</div>
+    <h2 class="section-title">Open a Centre in Your Community</h2>
+    <span class="section-line"></span>
+    <p class="section-sub">Just like Noah's Ark Animal Rescue Network, Y4A operates as a global franchise. We train passionate, compassionate people to become certified Y4A teachers — then support them to open a Y4A centre in their local area and change lives in their community.</p>
+
+    <div class="franchise-band">
+      <h3 style="font-family:'Orbitron',sans-serif;font-size:clamp(16px,2.5vw,24px);font-weight:900;color:#fff;margin-bottom:10px">Your Path to Becoming a Y4A Teacher</h3>
+      <p style="font-size:16px;color:var(--text);line-height:1.8;margin-bottom:32px">You don't need to be a yoga expert. You need to care deeply about people, be willing to learn, and have the heart to serve your community. We train you in everything else.</p>
+
+      <div class="franchise-steps">
+        <div class="fstep">
+          <div class="fstep-num">01</div>
+          <div class="fstep-title">APPLY</div>
+          <p class="fstep-body">Submit your application and tell us about your passion for yoga, wellness and helping people with autism and disabilities.</p>
+        </div>
+        <div class="fstep">
+          <div class="fstep-num">02</div>
+          <div class="fstep-title">TRAIN</div>
+          <p class="fstep-body">Complete our comprehensive Y4A teacher training programme — covering yoga, mindfulness, nutrition, working with autism and running your centre.</p>
+        </div>
+        <div class="fstep">
+          <div class="fstep-num">03</div>
+          <div class="fstep-title">CERTIFY</div>
+          <p class="fstep-body">Receive your official Y4A certification and join our global network of teachers — with full ongoing support, resources and community behind you.</p>
+        </div>
+        <div class="fstep">
+          <div class="fstep-num">04</div>
+          <div class="fstep-title">OPEN</div>
+          <p class="fstep-body">Launch your Y4A centre in your local area and start changing lives — with the full backing of the Y4A brand, materials and global community.</p>
+        </div>
+      </div>
+
+      <a class="btn-teal" href="mailto:david@yoga4autism.com" style="display:inline-block">Apply to Become a Teacher →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Y4A PORTAL -->
+<section class="section" id="portal" style="background:rgba(168,85,247,.02)">
+  <div class="section-inner">
+    <div class="section-kicker">Y4A 2.0 — COMING SOON</div>
+    <h2 class="section-title">The Y4A App &amp; Teacher Portal</h2>
+    <span class="section-line"></span>
+    <p class="section-sub">Originally planned back in 2013 alongside the first Y4A centres and training programmes — and finally arriving now as part of Y4A 2.0 and the OASIS Omniverse. The full digital home for everything Y4A.</p>
+
+    <div class="cards-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-bottom:40px">
+      <div class="card" style="border-color:rgba(168,85,247,.18)">
+        <div class="card-icon">📅</div>
+        <div class="card-title" style="color:var(--violet)">BOOK A CLASS</div>
+        <p class="card-body">Browse and book Y4A classes near you — group sessions, 1-on-1 appointments, retreats and school visits. Real-time availability, instant booking, and reminders built in.</p>
+      </div>
+      <div class="card" style="border-color:rgba(168,85,247,.18)">
+        <div class="card-icon">🗺️</div>
+        <div class="card-title" style="color:var(--violet)">FIND A LOCAL TEACHER</div>
+        <p class="card-body">Search for certified Y4A teachers in your area — with full profiles, star ratings, reviews and specialisms. Find exactly the right teacher for your child's or your own specific needs.</p>
+      </div>
+      <div class="card" style="border-color:rgba(168,85,247,.18)">
+        <div class="card-icon">🎯</div>
+        <div class="card-title" style="color:var(--violet)">FILTER BY SPECIALISM</div>
+        <p class="card-body">Every teacher lists their areas of expertise. Find teachers who specialise in early childhood autism (ages 2–5), Down's syndrome, ADHD, sensory processing, adult spectrum, non-verbal communication and more.</p>
+      </div>
+      <div class="card" style="border-color:rgba(168,85,247,.18)">
+        <div class="card-icon">📚</div>
+        <div class="card-title" style="color:var(--violet)">TRAINING MODULES</div>
+        <p class="card-body">Online training modules for aspiring Y4A teachers — the full Y4A curriculum available digitally for the first time. Complete at your own pace, earn certificates, and unlock higher-level teaching roles.</p>
+      </div>
+      <div class="card" style="border-color:rgba(168,85,247,.18)">
+        <div class="card-icon">⭐</div>
+        <div class="card-title" style="color:var(--violet)">RATINGS &amp; REVIEWS</div>
+        <p class="card-body">Genuine community feedback on every teacher and class — star ratings, written reviews, and verified attendance. Helping families find the very best support with total confidence.</p>
+      </div>
+      <div class="card" style="border-color:rgba(168,85,247,.18)">
+        <div class="card-icon">🧘</div>
+        <div class="card-title" style="color:var(--violet)">YOUR WELLNESS JOURNEY</div>
+        <p class="card-body">Track your practice over time — classes attended, streaks, milestones reached, karma earned and holistic goals set. Your complete Y4A journey, all in one place, connected to your OASIS avatar.</p>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,rgba(168,85,247,.07),rgba(0,201,167,.05));border:1px solid rgba(168,85,247,.2);border-radius:16px;padding:32px 36px;text-align:center;max-width:760px;margin:0 auto">
+      <p style="font-family:'Orbitron',sans-serif;font-size:15px;font-weight:700;color:#fff;margin-bottom:10px">This was always the plan — since 2013.</p>
+      <p style="font-size:16px;color:var(--text);line-height:1.8">The Y4A Portal and App were designed alongside the very first Y4A centres and training programmes. Life took a detour — but the dream never went away. Y4A 2.0 is here, and this time it has the full power of the OASIS Omniverse behind it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE PIPELINE -->
+<section class="section" id="ecosystem">
+  <div class="section-inner">
+    <div class="section-kicker">THE BIGGER PICTURE</div>
+    <h2 class="section-title">Y4A is Where It All Begins</h2>
+    <span class="section-line"></span>
+    <p class="section-sub">Yoga4Autism was the seed planted in 2013 that grew into an entire vision of a better world. It is not just a wellness programme — it is the first step in a journey that can take you wherever your gift leads.</p>
+
+    <div class="pipeline">
+      <div class="pipe-step teal">
+        <div class="pipe-icon">🧘</div>
+        <div class="pipe-label teal">STEP ONE</div>
+        <div class="pipe-title">Yoga4Autism</div>
+        <p style="font-size:13px;color:var(--text);margin-top:8px;line-height:1.6">Unlock your holistic health. Discover who you really are. Unlock your superpower.</p>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step blue">
+        <div class="pipe-icon">⚡</div>
+        <div class="pipe-label blue">STEP TWO</div>
+        <div class="pipe-title">Justice League Academy</div>
+        <p style="font-size:13px;color:var(--text);margin-top:8px;line-height:1.6">Train your mind and skills. Learn tech, arts, healing, coding and more.</p>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step violet">
+        <div class="pipe-icon">🌌</div>
+        <div class="pipe-label violet">STEP THREE</div>
+        <div class="pipe-title">Build the OASIS</div>
+        <p style="font-size:13px;color:var(--text);margin-top:8px;line-height:1.6">The top students are offered real roles helping build the OASIS Omniverse.</p>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:16px;color:var(--text);max-width:680px;margin:32px auto 0;line-height:1.8">This was the original vision from day one — and it has not changed. <strong style="color:#fff">Y4A unlocks the aspie superpower. JLA trains the genius. OASIS gives the genius a place to build the future.</strong> The world needs exactly what you have inside you.</p>
+  </div>
+</section>
+
+<!-- KARMA -->
+<section class="section" id="karma" style="background:rgba(0,201,167,.02)">
+  <div class="section-inner">
+    <div class="section-kicker">OASIS WEB4 KARMA</div>
+    <h2 class="section-title">Every Step Earns Karma</h2>
+    <span class="section-line"></span>
+    <p class="section-sub">Every Y4A session, every class attended, every life improved — earns karma on your universal OASIS avatar. The same karma score that unlocks opportunities across JLA, GHN, Noah's Ark, GraceBook and the entire OASIS Omniverse.</p>
+
+    <div class="karma-grid">
+      <div class="kchip"><span class="kchip-num">+150</span><span class="kchip-act">ATTEND A CLASS</span></div>
+      <div class="kchip"><span class="kchip-num">+300</span><span class="kchip-act">COMPLETE A PROGRAMME</span></div>
+      <div class="kchip"><span class="kchip-num">+250</span><span class="kchip-act">BRING A FRIEND</span></div>
+      <div class="kchip"><span class="kchip-num">+500</span><span class="kchip-act">TEACH A SESSION</span></div>
+      <div class="kchip"><span class="kchip-num">+400</span><span class="kchip-act">COMPLETE A RETREAT</span></div>
+      <div class="kchip"><span class="kchip-num">+600</span><span class="kchip-act">BECOME CERTIFIED</span></div>
+      <div class="kchip"><span class="kchip-num">+1000</span><span class="kchip-act">OPEN A CENTRE</span></div>
+      <div class="kchip"><span class="kchip-num">+200</span><span class="kchip-act">30-DAY STREAK</span></div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px">
+      <a class="btn-teal" href="https://oportal.oasisomniverse.one" target="_blank" rel="noopener">Create Your Free OASIS Avatar →</a>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="section" style="background:rgba(0,201,167,.02)">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-kicker">SINCE 2013</div>
+    <h2 class="section-title">We're Back. 🧘</h2>
+    <span class="section-line"></span>
+    <div style="background:linear-gradient(135deg,rgba(0,201,167,.06),rgba(168,85,247,.05));border:1px solid rgba(0,201,167,.18);border-radius:16px;padding:32px 36px;max-width:780px;margin:0 auto 36px;text-align:left">
+      <p style="font-size:17px;color:var(--text);line-height:1.85;margin-bottom:14px">To our nearly <strong style="color:#fff">3,000 members</strong> who built this community from nothing — entirely through word of mouth, zero advertising, pure love — thank you. We never forgot you.</p>
+      <p style="font-size:17px;color:var(--text);line-height:1.85;margin-bottom:14px">David didn't vanish. He went underground. Ten years in his OASIS lab — no funding, no team, no blueprint. Just one aspie with a vision and a refusal to quit. He built an entire technology universe from scratch, by hand — every library, every networking layer, every storage system, every line of code. Alone. While the world moved on without him.</p>
+      <p style="font-size:17px;color:var(--text);line-height:1.85;margin-bottom:14px">Two kids taken from him. Burnout. Health crises. Heartbreak most people couldn't survive. And through all of it — he never stopped. Because he had something to prove. Not to the world. To every aspie who was ever told they couldn't.</p>
+      <p style="font-size:17px;color:var(--teal);font-weight:600;line-height:1.85">"I always believed aspies had superhero gifts. So I built the entire OASIS Omniverse to prove it. That was always the real mission — to inspire and empower billions. To show the world what we can do. And to show what anyone can do if they never quit, follow their dreams and believe in themselves." — David Ellams</p>
+    </div>
+    <a href="https://www.facebook.com/Yoga4Autism" target="_blank" rel="noopener" class="btn-teal" style="font-size:14px;padding:16px 44px">📘 Come Say Hello on Facebook →</a>
+    <p style="margin-top:20px;font-size:14px;color:var(--text)">The original Y4A community — still here, still growing.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand"><span>YOGA4</span>AUTISM</div>
+  <p class="footer-sub">Founded 2013 by David Ellams · Part of the OASIS Omniverse · Changing lives one breath at a time.</p>
+  <ul class="footer-links">
+    <li><a href="#mission">Mission</a></li>
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#programmes">Programmes</a></li>
+    <li><a href="#franchise">Become a Teacher</a></li>
+    <li><a href="https://www.facebook.com/Yoga4Autism" target="_blank" rel="noopener">📘 Facebook Community</a></li>
+    <li><a href="https://jla.oasisomniverse.one" target="_blank" rel="noopener">Justice League Academy</a></li>
+    <li><a href="https://ghn.oasisomniverse.one" target="_blank" rel="noopener">Global Healing Network</a></li>
+    <li><a href="https://noahsark.oasisomniverse.one" target="_blank" rel="noopener">Noah's Ark ARN</a></li>
+    <li><a href="https://gracebook.oasisomniverse.one" target="_blank" rel="noopener">GraceBook</a></li>
+    <li><a href="https://oasisomniverse.one" target="_blank" rel="noopener">OASIS Omniverse</a></li>
+  </ul>
+  <p class="footer-copy">© 2013–2026 Yoga4Autism Ltd &amp; NextGen World Ltd. All rights reserved.</p>
+</footer>
+
+<!-- CONNECT AVATAR MODAL -->
+<div class="av-modal-overlay" id="av-modal-overlay">
+  <div class="av-modal">
+    <button class="av-modal-close" id="av-modal-close">✕</button>
+    <div class="av-modal-kicker">OASIS WEB4 API</div>
+    <div class="av-modal-title">Connect Your Avatar</div>
+    <p class="av-modal-sub">Sign in with your OASIS avatar to track your Y4A journey and earn karma for every session.</p>
+    <input class="av-field" id="bi-email" type="email" placeholder="Email address" autocomplete="username">
+    <input class="av-field" id="bi-password" type="password" placeholder="Password" autocomplete="current-password">
+    <button class="av-submit" id="av-submit">CONNECT AVATAR</button>
+    <div class="av-error" id="av-error"></div>
+  </div>
+</div>
+
+<script>
+// Theme switcher
+(function(){
+  const btns=document.querySelectorAll('.theme-btn');
+  const saved=localStorage.getItem('y4a-theme')||'modern';
+  applyTheme(saved);
+  btns.forEach(btn=>btn.addEventListener('click',()=>{
+    applyTheme(btn.dataset.theme);
+    localStorage.setItem('y4a-theme',btn.dataset.theme);
+  }));
+  function applyTheme(t){
+    document.body.classList.toggle('classic',t==='classic');
+    btns.forEach(b=>{b.classList.toggle('active',b.dataset.theme===t)});
+  }
+})();
+
+// Nav toggle
+document.getElementById('nav-toggle').addEventListener('click',function(){
+  this.classList.toggle('open');
+  document.getElementById('nav-links').classList.toggle('open');
+});
+
+// Gentle stars — fewer, slower, calmer than other sites
+(function(){
+  const canvas=document.createElement('canvas');
+  canvas.style.cssText='position:fixed;inset:0;z-index:0;pointer-events:none';
+  document.body.prepend(canvas);
+  const ctx=canvas.getContext('2d');
+  let stars=[];
+  function resize(){
+    canvas.width=innerWidth;canvas.height=innerHeight;
+    stars=Array.from({length:80},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*.9+.2,o:Math.random()*.4+.1,s:Math.random()*.15+.05}));
+  }
+  resize();window.addEventListener('resize',resize);
+  (function draw(){
+    requestAnimationFrame(draw);ctx.clearRect(0,0,canvas.width,canvas.height);
+    stars.forEach(s=>{
+      s.o+=s.s*.008*(Math.random()>.5?1:-1);
+      s.o=Math.max(.05,Math.min(.55,s.o));
+      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(168,191,216,${s.o})`;ctx.fill();
+    });
+  })();
+})();
+
+// Connect Avatar
+(function(){
+  const navCta=document.querySelector('.nav-cta');
+  if(!navCta)return;
+  const connectBtn=document.createElement('button');
+  connectBtn.className='av-connect-btn';
+  connectBtn.id='av-connect-btn';
+  connectBtn.textContent='⬡ CONNECT AVATAR';
+  navCta.closest('.nav-right').appendChild(connectBtn);
+  const badge=document.createElement('div');
+  badge.className='av-connected-badge';
+  badge.id='av-badge';
+  badge.innerHTML=`<span class="av-avatar-name" id="av-avatar-name">—</span><span class="av-karma-pill" id="av-karma-pill">🧘 0</span><button class="av-logout-btn" id="av-logout-btn">✕</button>`;
+  navCta.closest('.nav-right').appendChild(badge);
+  document.getElementById('av-logout-btn').addEventListener('click',logout);
+  const overlay=document.getElementById('av-modal-overlay');
+  document.getElementById('av-modal-close').addEventListener('click',()=>overlay.classList.remove('open'));
+  overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.classList.remove('open')});
+  connectBtn.addEventListener('click',()=>overlay.classList.add('open'));
+  document.getElementById('av-submit').addEventListener('click',async()=>{
+    const email=document.getElementById('bi-email').value.trim();
+    const password=document.getElementById('bi-password').value;
+    const err=document.getElementById('av-error');
+    err.textContent='';
+    if(!email||!password){err.textContent='Please enter your email and password.';return;}
+    try{
+      const{OASISClient}=await import('https://esm.sh/@oasisomniverse/web4-api@2.0.2');
+      const client=new OASISClient({baseUrl:'https://api.web4.oasisomniverse.one',persistSession:true});
+      const res=await client.avatar.login({username:email,password});
+      if(res?.isError){err.textContent=res.message||'Login failed.';return;}
+      const av=res?.result?.avatar||res?.result;
+      if(av){
+        document.getElementById('av-avatar-name').textContent=av.username||av.email||'Avatar';
+        document.getElementById('av-karma-pill').textContent='🧘 '+(av.karmaTotal??0);
+        connectBtn.style.display='none';
+        badge.classList.add('show');
+        overlay.classList.remove('open');
+      }
+    }catch(e){err.textContent='Connection error. Please try again.';}
+  });
+  function logout(){
+    connectBtn.style.display='';
+    badge.classList.remove('show');
+    document.getElementById('av-avatar-name').textContent='—';
+    document.getElementById('av-karma-pill').textContent='🧘 0';
+  }
+})();
+</script>
+</body>
+</html>
