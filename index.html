@@ -42,7 +42,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:fl
 .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-toggle.open span:nth-child(2){opacity:0}
 .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-@media(max-width:900px){
+@media(max-width:900px){.nav-cta,.theme-switcher{display:none}
   .nav-links{display:none;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(3,10,20,.97);padding:100px 40px 40px;gap:28px;z-index:99}
   .nav-links.open{display:flex}
   .nav-links-mobile-only{display:list-item}
@@ -272,7 +272,7 @@ body.classic .hero::after{content:'';position:absolute;inset:0;background:
   pointer-events:none;z-index:0}
 body.classic .nav-links{background:rgba(255,249,254,.98)}
 
-@media(max-width:900px){
+@media(max-width:900px){.nav-cta,.theme-switcher{display:none}
   body.classic .nav-links{background:rgba(255,249,254,.98)}
 }
 </style>
